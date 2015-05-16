@@ -34,7 +34,7 @@ public class OsgiITest
 	protected void activate()
 	{
 		System.out.println("Activating OsgiITest ...");
-		Map<String, String> connectionParams = createConnectionParams();
+		final Map<String, String> connectionParams = createConnectionParams();
 		// Session session = this.sessionFactory.createSession(connectionParams);
 		List<Repository> repositories = this.sessionFactory.getRepositories(connectionParams);
 
@@ -43,19 +43,28 @@ public class OsgiITest
 			System.out.println("ID : " + repository.getId());
 		}
 
-		for (int i = 0; i < 25; i++)
+		new Thread(new Runnable()
 		{
-			Session createSession = this.sessionFactory.createSession(connectionParams);
-			try
+
+			@Override
+			public void run()
 			{
-				Thread.sleep(5000);
+				// TODO Auto-generated method stub
+				for (int i = 0; i < 25; i++)
+				{
+					Session createSession = sessionFactory.createSession(connectionParams);
+					try
+					{
+						Thread.sleep(5000);
+					}
+					catch (InterruptedException e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 			}
-			catch (InterruptedException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		}).start();
 	}
 
 	private Map<String, String> createConnectionParams()
@@ -66,6 +75,10 @@ public class OsgiITest
 		parameters.put(SessionParameter.ATOMPUB_URL, "http://cmis.alfresco.com/cmisatom");
 		parameters.put(SessionParameter.BINDING_TYPE, BindingType.ATOMPUB.value());
 		parameters.put(SessionParameter.REPOSITORY_ID, "e38e1925-6ef0-4871-aacd-284bc72c2a30");
+		parameters.put(SessionParameter.AUTHENTICATION_PROVIDER_CLASS,
+			"org.apache.chemistry.opencmis.osgi.client.authprovider.internal.MockAuthenticationProviderImpl");
+		parameters.put(SessionParameter.OBJECT_FACTORY_CLASS,
+			"org.apache.chemistry.opencmis.osgi.client.objectfactory.internal.MockObjectFactoryImpl");
 
 		// if you want to explicit connect to a known repository then use
 		// SessionParameter.REPOSITORY_ID

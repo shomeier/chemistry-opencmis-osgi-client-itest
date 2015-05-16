@@ -24,5 +24,5 @@
 <booleanAttribute key="tracing" value="false"/>
 <booleanAttribute key="useCustomFeatures" value="false"/>
 <booleanAttribute key="useDefaultConfigArea" value="true"/>
-<stringAttribute key="workspace_bundles" value="org.apache.chemistry.opencmis.client.osgi.itest@default:true,org.apache.chemistry.opencmis.osgi.client.objectfactory@default:default"/>
+<stringAttribute key="workspace_bundles" value="org.apache.chemistry.opencmis.client.osgi.itest@default:true,org.apache.chemistry.opencmis.osgi.client.objectfactory@default:default,org.apache.chemistry.opencmis.osgiclient.authprovider@default:default"/>
 </launchConfiguration>
