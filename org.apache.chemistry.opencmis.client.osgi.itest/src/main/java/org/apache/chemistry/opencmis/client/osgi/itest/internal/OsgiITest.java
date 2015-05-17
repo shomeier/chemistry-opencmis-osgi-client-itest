@@ -51,7 +51,7 @@ public class OsgiITest extends Thread
 	public void run()
 	{
 		// repeat the following testing steps 25 times with a sleep
-		// this gives you time to do some testing (uninstall/stop/start bundles)
+		// this gives you time to do some testing on console (uninstall/stop/start bundles)
 		try
 		{
 			for (int i = 0; i < 25; i++)
