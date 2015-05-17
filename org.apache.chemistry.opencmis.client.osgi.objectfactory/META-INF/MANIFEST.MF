@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Mock ObjectFactory for OpenCMIS OSGi Client ITest
+Bundle-SymbolicName: org.apache.chemistry.opencmis.client.osgi.objectfactory
+Bundle-Version: 0.1.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Service-Component: OSGI-INF/object-factory-component.xml
+Import-Package: org.apache.chemistry.opencmis.client.api;version="1.0.0.SNAPSHOT",
+ org.apache.chemistry.opencmis.commons.data;version="1.0.0.SNAPSHOT",
+ org.apache.chemistry.opencmis.commons.definitions;version="1.0.0.SNAPSHOT",
+ org.apache.chemistry.opencmis.commons.enums;version="1.0.0.SNAPSHOT"
+Chemistry-SPI: org.apache.chemistry.opencmis.client.osgi.objectfactory.internal.MockObjectFactoryImpl

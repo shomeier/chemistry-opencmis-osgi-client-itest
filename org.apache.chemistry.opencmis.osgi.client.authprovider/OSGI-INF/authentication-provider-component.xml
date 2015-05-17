@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" immediate="false" name="org.apache.chemistry.opencmis.osgi.client.authprovider">
-   <implementation class="org.apache.chemistry.opencmis.osgi.client.authprovider.internal.MockAuthenticationProviderImpl"/>
-   <service>
-      <provide interface="org.apache.chemistry.opencmis.commons.spi.AuthenticationProvider"/>
-   </service>
-</scr:component>

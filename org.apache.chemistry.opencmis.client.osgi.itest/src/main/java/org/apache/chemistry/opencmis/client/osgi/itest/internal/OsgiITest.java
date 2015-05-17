@@ -83,10 +83,15 @@ public class OsgiITest extends Thread
 		parameters.put(SessionParameter.REPOSITORY_ID, "45c8a9e9-ae77-474c-ab9e-8d425896d8c1");
 
 		// provide our mock authentication provider and object factory class names
+		// parameters.put(SessionParameter.AUTHENTICATION_PROVIDER_CLASS,
+		// "org.apache.chemistry.opencmis.client.osgi.authprovider.internal.MockAuthenticationProviderImpl");
+		// parameters.put(SessionParameter.OBJECT_FACTORY_CLASS,
+		// "org.apache.chemistry.opencmis.client.osgi.objectfactory.internal.MockObjectFactoryImpl");
+
 		parameters.put(SessionParameter.AUTHENTICATION_PROVIDER_CLASS,
-			"org.apache.chemistry.opencmis.osgi.client.authprovider.internal.MockAuthenticationProviderImpl");
+			"org.apache.chemistry.opencmis.client.osgi.twoinone.Mock2n1AuthProvider");
 		parameters.put(SessionParameter.OBJECT_FACTORY_CLASS,
-			"org.apache.chemistry.opencmis.osgi.client.objectfactory.internal.MockObjectFactoryImpl");
+			"org.apache.chemistry.opencmis.client.osgi.twoinone.Mock2n1ObjFactory");
 
 		return parameters;
 	}
