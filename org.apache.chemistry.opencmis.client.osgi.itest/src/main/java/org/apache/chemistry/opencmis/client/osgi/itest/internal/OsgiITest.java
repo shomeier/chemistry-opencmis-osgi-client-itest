@@ -40,36 +40,6 @@ public class OsgiITest extends Thread
 		}
 
 		start();
-		// // start a new thread to do the test stuff asynchronously
-		// // Equinox DS wants you to start during 30 seconds
-		// new Thread(new Runnable()
-		// {
-		// @Override
-		// public void run()
-		// {
-		// // repeat the following testing steps 25 times with a sleep
-		// // this gives you time to do some testing (uninstall/stop/start bundles)
-		// for (int i = 0; i < 25; i++)
-		// {
-		// // create a session via SessionFactory OSGi Service
-		// Session session = sessionFactory.createSession(connectionParams);
-		// try
-		// {
-		// // get the repository info 10 times with a pause of 1 second for each call
-		// for (int j = 0; j < 10; j++)
-		// {
-		// RepositoryInfo repositoryInfo = session.getRepositoryInfo();
-		// System.out.println("-> " + repositoryInfo.getDescription());
-		// Thread.sleep(1000);
-		// }
-		// }
-		// catch (InterruptedException e)
-		// {
-		// e.printStackTrace();
-		// }
-		// }
-		// }
-		// }).start();
 	}
 
 	protected void deactivate()
