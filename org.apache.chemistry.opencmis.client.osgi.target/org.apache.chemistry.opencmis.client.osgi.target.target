@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="org.apache.chemistry.opencmis.client.osgi.target" sequenceNumber="9">
+<?pde version="3.8"?><target name="org.apache.chemistry.opencmis.client.osgi.target" sequenceNumber="23">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.equinox.sdk.feature.group" version="3.10.2.v20150204-1316"/>

@@ -1,6 +1,3 @@
-/**
- *
- */
 package org.apache.chemistry.opencmis.client.osgi.itest.internal;
 
 import java.util.HashMap;
@@ -11,14 +8,14 @@ import org.apache.chemistry.opencmis.client.api.Repository;
 import org.apache.chemistry.opencmis.client.api.Session;
 import org.apache.chemistry.opencmis.client.api.SessionFactory;
 import org.apache.chemistry.opencmis.commons.SessionParameter;
+import org.apache.chemistry.opencmis.commons.data.RepositoryInfo;
 import org.apache.chemistry.opencmis.commons.enums.BindingType;
 
-/**
- * @author SHomeier
- */
-public class OsgiITest
+public class OsgiITest extends Thread
 {
 	private SessionFactory sessionFactory;
+
+	Map<String, String> connectionParams;
 
 	protected void bindSessionFactory(SessionFactory sessionFactory)
 	{
@@ -34,8 +31,7 @@ public class OsgiITest
 	protected void activate()
 	{
 		System.out.println("Activating OsgiITest ...");
-		final Map<String, String> connectionParams = createConnectionParams();
-		// Session session = this.sessionFactory.createSession(connectionParams);
+		this.connectionParams = createConnectionParams();
 		List<Repository> repositories = this.sessionFactory.getRepositories(connectionParams);
 
 		for (Repository repository : repositories)
@@ -43,28 +39,68 @@ public class OsgiITest
 			System.out.println("ID : " + repository.getId());
 		}
 
-		new Thread(new Runnable()
-		{
+		start();
+		// // start a new thread to do the test stuff asynchronously
+		// // Equinox DS wants you to start during 30 seconds
+		// new Thread(new Runnable()
+		// {
+		// @Override
+		// public void run()
+		// {
+		// // repeat the following testing steps 25 times with a sleep
+		// // this gives you time to do some testing (uninstall/stop/start bundles)
+		// for (int i = 0; i < 25; i++)
+		// {
+		// // create a session via SessionFactory OSGi Service
+		// Session session = sessionFactory.createSession(connectionParams);
+		// try
+		// {
+		// // get the repository info 10 times with a pause of 1 second for each call
+		// for (int j = 0; j < 10; j++)
+		// {
+		// RepositoryInfo repositoryInfo = session.getRepositoryInfo();
+		// System.out.println("-> " + repositoryInfo.getDescription());
+		// Thread.sleep(1000);
+		// }
+		// }
+		// catch (InterruptedException e)
+		// {
+		// e.printStackTrace();
+		// }
+		// }
+		// }
+		// }).start();
+	}
 
-			@Override
-			public void run()
+	protected void deactivate()
+	{
+		System.out.println("DEACTIVATING OSGiITest...");
+		this.interrupt();
+	}
+
+	public void run()
+	{
+		// repeat the following testing steps 25 times with a sleep
+		// this gives you time to do some testing (uninstall/stop/start bundles)
+		try
+		{
+			for (int i = 0; i < 25; i++)
 			{
-				// TODO Auto-generated method stub
-				for (int i = 0; i < 25; i++)
+				// create a session via SessionFactory OSGi Service
+				Session session = sessionFactory.createSession(connectionParams);
+				// get the repository info 10 times with a pause of 1 second for each call
+				for (int j = 0; j < 10; j++)
 				{
-					Session createSession = sessionFactory.createSession(connectionParams);
-					try
-					{
-						Thread.sleep(5000);
-					}
-					catch (InterruptedException e)
-					{
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					RepositoryInfo repositoryInfo = session.getRepositoryInfo();
+					System.out.println("-> " + repositoryInfo.getDescription());
+					Thread.sleep(1000);
 				}
 			}
-		}).start();
+		}
+		catch (InterruptedException e)
+		{
+			System.out.println("Interrupted!!");
+		}
 	}
 
 	private Map<String, String> createConnectionParams()
@@ -74,15 +110,13 @@ public class OsgiITest
 		parameters.put(SessionParameter.PASSWORD, "admin");
 		parameters.put(SessionParameter.ATOMPUB_URL, "http://cmis.alfresco.com/cmisatom");
 		parameters.put(SessionParameter.BINDING_TYPE, BindingType.ATOMPUB.value());
-		parameters.put(SessionParameter.REPOSITORY_ID, "e38e1925-6ef0-4871-aacd-284bc72c2a30");
+		parameters.put(SessionParameter.REPOSITORY_ID, "45c8a9e9-ae77-474c-ab9e-8d425896d8c1");
+
+		// provide our mock authentication provider and object factory class names
 		parameters.put(SessionParameter.AUTHENTICATION_PROVIDER_CLASS,
 			"org.apache.chemistry.opencmis.osgi.client.authprovider.internal.MockAuthenticationProviderImpl");
 		parameters.put(SessionParameter.OBJECT_FACTORY_CLASS,
 			"org.apache.chemistry.opencmis.osgi.client.objectfactory.internal.MockObjectFactoryImpl");
-
-		// if you want to explicit connect to a known repository then use
-		// SessionParameter.REPOSITORY_ID
-		// parameters.put(SessionParameter.REPOSITORY_ID, "repository_id_here");
 
 		return parameters;
 	}

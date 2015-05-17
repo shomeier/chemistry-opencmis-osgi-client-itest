@@ -41,8 +41,19 @@ public class MockObjectFactoryImpl implements ObjectFactory
 {
 	protected void activate()
 	{
-		System.out.println("Activated MockObjectFactory!");
+		System.out.println("Activating MockObjectFactory ...");
 
+		try
+		{
+			Thread.sleep(10000);
+		}
+		catch (InterruptedException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println("Activated MockObjectFactory!");
 	}
 
 	/*
@@ -181,7 +192,7 @@ public class MockObjectFactoryImpl implements ObjectFactory
 	public RepositoryInfo convertRepositoryInfo(RepositoryInfo arg0)
 	{
 		System.out.println("convertRepositoryInfo called");
-		return null;
+		return arg0;
 	}
 
 	/*
