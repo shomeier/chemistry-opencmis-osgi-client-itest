@@ -10,4 +10,4 @@ Import-Package: org.apache.chemistry.opencmis.client.api;version="1.0.0.SNAPSHOT
  org.apache.chemistry.opencmis.commons.data;version="1.0.0.SNAPSHOT",
  org.apache.chemistry.opencmis.commons.definitions;version="1.0.0.SNAPSHOT",
  org.apache.chemistry.opencmis.commons.enums;version="1.0.0.SNAPSHOT"
-Chemistry-SPI: org.apache.chemistry.opencmis.client.osgi.objectfactory.internal.MockObjectFactoryImpl
+OpenCMIS-SPI: org.apache.chemistry.opencmis.client.osgi.objectfactory.internal.MockObjectFactoryImpl

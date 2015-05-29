@@ -80,7 +80,7 @@ public class OsgiITest extends Thread
 		parameters.put(SessionParameter.PASSWORD, "admin");
 		parameters.put(SessionParameter.ATOMPUB_URL, "http://cmis.alfresco.com/cmisatom");
 		parameters.put(SessionParameter.BINDING_TYPE, BindingType.ATOMPUB.value());
-		parameters.put(SessionParameter.REPOSITORY_ID, "45c8a9e9-ae77-474c-ab9e-8d425896d8c1");
+		parameters.put(SessionParameter.REPOSITORY_ID, "3cc5d4b5-e177-4d71-a739-123f437b32f6");
 
 		// provide our mock authentication provider and object factory class names
 		// parameters.put(SessionParameter.AUTHENTICATION_PROVIDER_CLASS,

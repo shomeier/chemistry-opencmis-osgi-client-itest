@@ -7,6 +7,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.apache.chemistry.opencmis.client.bindings.spi,
  org.osgi.framework;version="1.8.0"
 Service-Component: OSGI-INF/authentication-provider-component.xml
-Chemistry-SPI: org.apache.chemistry.opencmis.client.osgi.authprovider.internal.MockAuthenticationProviderImpl
+OpenCMIS-SPI: org.apache.chemistry.opencmis.client.osgi.authprovider.internal.MockAuthenticationProviderImpl
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.apache.chemistry.opencmis.client.osgi.authprovider.internal.Activator
