@@ -83,15 +83,17 @@ public class OsgiITest extends Thread
 		parameters.put(SessionParameter.REPOSITORY_ID, "b2103bd9-2a22-49c8-be09-17e28d062de1");
 
 		// provide our mock authentication provider and object factory class names
-		// parameters.put(SessionParameter.AUTHENTICATION_PROVIDER_CLASS,
-		// "org.apache.chemistry.opencmis.client.osgi.authprovider.internal.MockAuthenticationProviderImpl");
+		parameters.put(SessionParameter.AUTHENTICATION_PROVIDER_CLASS,
+			"org.apache.chemistry.opencmis.client.osgi.authprovider.internal.MockAuthenticationProviderImpl");
 		// parameters.put(SessionParameter.OBJECT_FACTORY_CLASS,
 		// "org.apache.chemistry.opencmis.client.osgi.objectfactory.internal.MockObjectFactoryImpl");
 
-		parameters.put(SessionParameter.AUTHENTICATION_PROVIDER_CLASS,
-			"org.apache.chemistry.opencmis.client.osgi.twoinone.Mock2n1AuthProvider");
-		parameters.put(SessionParameter.OBJECT_FACTORY_CLASS,
-			"org.apache.chemistry.opencmis.client.osgi.twoinone.Mock2n1ObjFactory");
+		// parameters.put(SessionParameter.AUTHENTICATION_PROVIDER_CLASS,
+		// "org.apache.chemistry.opencmis.client.osgi.twoinone.Mock2n1AuthProvider");
+		// parameters.put(SessionParameter.AUTHENTICATION_PROVIDER_CLASS,
+		// "org.apache.chemistry.opencmis.client.osgi.twoinone.Mock2n1SecondAuthProvider");
+		// parameters.put(SessionParameter.OBJECT_FACTORY_CLASS,
+		// "org.apache.chemistry.opencmis.client.osgi.twoinone.Mock2n1ObjFactory");
 
 		return parameters;
 	}

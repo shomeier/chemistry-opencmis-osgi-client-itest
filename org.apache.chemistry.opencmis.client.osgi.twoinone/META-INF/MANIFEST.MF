@@ -4,9 +4,9 @@ Bundle-Name: TwoInOne
 Bundle-SymbolicName: org.apache.chemistry.opencmis.client.osgi.twoinone
 Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Bundle-ActivationPolicy: lazy
 OpenCMIS-SPI: org.apache.chemistry.opencmis.client.osgi.twoinone.Mock2n1AuthProvider,
- org.apache.chemistry.opencmis.client.osgi.twoinone.Mock2n1ObjFactory
+ org.apache.chemistry.opencmis.client.osgi.twoinone.Mock2n1ObjFactory,
+ org.apache.chemistry.opencmis.client.osgi.twoinone.Mock2n1SecondAuthProvider 
 Import-Package: org.apache.chemistry.opencmis.client.api;version="1.0.0.SNAPSHOT",
  org.apache.chemistry.opencmis.client.bindings.spi;version="1.0.0.SNAPSHOT",
  org.apache.chemistry.opencmis.commons.data;version="1.0.0.SNAPSHOT",
